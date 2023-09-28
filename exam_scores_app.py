@@ -23,9 +23,9 @@ def create_bar_chart(data):
     st.header("Bar Chart of Top 10 Students")
     top_10_students = data.sort_values(by='Exam_Score', ascending=False).head(10)
     fig, ax = plt.subplots()
-    ax.bar(top_10_students['Studen_Name'], top_10_students['Exam_Score'])
-    ax.set_xlabel('Student_Name')
-    ax.set_ylabel('Exam_Score')
+    ax.bar(top_10_students['Student_Name'], top_10_students['Exam_Score'])
+    ax.set_xlabel('Student Name')
+    ax.set_ylabel('Exam Score')
     ax.set_xticklabels(top_10_students['Student_Name'], rotation=45)
     st.pyplot(fig)
 
