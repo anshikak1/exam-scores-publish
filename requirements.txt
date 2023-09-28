@@ -5,4 +5,3 @@ pydeck
 streamlit
 matplotlib
 seaborn
-runpy
