@@ -11,6 +11,24 @@ LOGGER = get_logger(__name__)
 def load_data():
     return pd.read_csv('exam_scores.csv')
 
+def create_histogram(data):
+    st.header("Histogram of Exam Scores")
+    fig, ax = plt.subplots()
+    sns.histplot(data['Exam_Score'], bins=10, kde=True, ax=ax)
+    ax.set_xlabel('Exam Scores')
+    ax.set_ylabel('Number of Students')
+    st.pyplot(fig)
+
+def create_bar_chart(data):
+    st.header("Bar Chart of Top 10 Students")
+    top_10_students = data.sort_values(by='Exam_Score', ascending=False).head(10)
+    fig, ax = plt.subplots()
+    ax.bar(top_10_students['Studen_Name'], top_10_students['Exam_Score'])
+    ax.set_xlabel('Student_Name')
+    ax.set_ylabel('Exam_Score')
+    ax.set_xticklabels(top_10_students['Student_Name'], rotation=45)
+    st.pyplot(fig)
+
 def main():
     # Load data
     data = load_data()
@@ -23,24 +41,6 @@ def main():
 
     # Second Visualization - Bar Chart of Top 10 Students
     create_bar_chart(data)
-
-def create_histogram(data):
-    st.header("Histogram of Exam Scores")
-    fig, ax = plt.subplots()
-    sns.histplot(data['Exam Score'], bins=10, kde=True, ax=ax)
-    ax.set_xlabel('Exam Scores')
-    ax.set_ylabel('Number of Students')
-    st.pyplot(fig)
-
-def create_bar_chart(data):
-    st.header("Bar Chart of Top 10 Students")
-    top_10_students = data.sort_values(by='Exam Score', ascending=False).head(10)
-    fig, ax = plt.subplots()
-    ax.bar(top_10_students['Student Name'], top_10_students['Exam Score'])
-    ax.set_xlabel('Student Name')
-    ax.set_ylabel('Exam Score')
-    ax.set_xticklabels(top_10_students['Student Name'], rotation=45)
-    st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
