@@ -14,16 +14,16 @@ def load_data():
 def create_histogram(data):
     st.header("Histogram of Exam Scores")
     fig, ax = plt.subplots()
-    sns.histplot(data['Exam_Score'], bins=10, kde=True, ax=ax)
+    sns.histplot(data['Score'], bins=10, kde=True, ax=ax)
     ax.set_xlabel('Exam Scores')
     ax.set_ylabel('Number of Students')
     st.pyplot(fig)
 
 def create_bar_chart(data):
     st.header("Bar Chart of Top 10 Students")
-    top_10_students = data.sort_values(by='Exam_Score', ascending=False).head(10)
+    top_10_students = data.sort_values(by='Score', ascending=False).head(10)
     fig, ax = plt.subplots()
-    ax.bar(top_10_students['Student_Name'], top_10_students['Exam_Score'])
+    ax.bar(top_10_students['Student_Name'], top_10_students['Score'])
     ax.set_xlabel('Student Name')
     ax.set_ylabel('Exam Score')
     ax.set_xticklabels(top_10_students['Student_Name'], rotation=45)
