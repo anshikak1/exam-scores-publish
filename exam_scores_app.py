@@ -11,14 +11,6 @@ LOGGER = get_logger(__name__)
 def load_data():
     return pd.read_csv('exam_scores.csv')
 
-def create_histogram(data):
-    st.header("Histogram of Exam Scores")
-    fig, ax = plt.subplots()
-    sns.histplot(data['Score'], bins=10, kde=True, ax=ax)
-    ax.set_xlabel('Exam Scores')
-    ax.set_ylabel('Number of Students')
-    st.pyplot(fig)
-
 def create_bar_chart(data):
     st.header("Bar Chart of Top 10 Students")
     top_10_students = data.sort_values(by='Score', ascending=False).head(10)
@@ -35,9 +27,6 @@ def main():
 
     # Title of the app
     st.title("Exam Score Analysis")
-
-    # First Visualization - Histogram of Exam Scores
-    create_histogram(data)
 
     # Second Visualization - Bar Chart of Top 10 Students
     create_bar_chart(data)
