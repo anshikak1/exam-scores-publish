@@ -1,3 +1,4 @@
+import runpy
 import streamlit as st
 from streamlit.logger import get_logger
 import pandas as pd
@@ -51,4 +52,4 @@ st.pyplot(fig)
 
 
 if __name__ == "__main__":
-    run()
+    runpy()
