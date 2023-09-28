@@ -31,5 +31,19 @@ def main():
     # Second Visualization - Bar Chart of Top 10 Students
     create_bar_chart(data)
 
+
+def run():
+  df = pd.read_csv('toy_dataset.csv')
+  city_counts = df['City'].value_counts()
+
+  city_counts.plot(kind='bar', color='skyblue')
+  plt.xlabel('City')
+  plt.ylabel('Count')
+  plt.title('Number of Individuals in Each City')
+  plt.xticks(rotation=45)  # Rotating x-axis labels for better readability
+  plt.tight_layout()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st. pyplot(plt.show())
+
 if __name__ == "__main__":
-    main()
+    run()
